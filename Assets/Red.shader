@@ -3,13 +3,12 @@
        SubShader {  
         Tags { "RenderType"="Opaque" "Queue"="Geometry"}
         Pass {  
+
             Stencil {  
-                Ref 2                     //参考值为2，stencilBuffer值默认为0  
-                Comp equal               //stencil比较方式是永远通过  
-                //Pass replace              //pass的处理是替换，就是拿2替换buffer 的值  
-                //ZFail decrWrap            //ZFail的处理是溢出型减1  
-            }  
-        // stencil和Zbuffer都通过的话就执行。把点渲染成红色。  
+                Ref 2                     // 0-255
+                Comp equal               // stencil compare need to be equal
+            }   
+
             CGPROGRAM  
             #pragma vertex vert  
             #pragma fragment frag  

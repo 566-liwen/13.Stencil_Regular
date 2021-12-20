@@ -1,17 +1,15 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
-
-Shader "Unlit/Green"
+﻿Shader "Unlit/Green"
 {
      SubShader {  
         Tags { "RenderType"="Opaque" "Queue"="Geometry"}
         Pass {  
+
             Stencil {  
-                Ref 2                     //参考值为2，stencilBuffer值默认为0  
-                Comp always               //stencil比较方式是永远通过  
-                Pass replace              //pass的处理是替换，就是拿2替换buffer 的值  
-                //ZFail decrWrap            //ZFail的处理是溢出型减1  
+                Ref 2                     // 0-255
+                Comp always               // compare stencil
+                Pass replace              // pass - replace with 2 here
             }  
-        // stencil和Zbuffer都通过的话就执行。把点渲染成红色。  
+
             CGPROGRAM  
             #pragma vertex vert  
             #pragma fragment frag  
